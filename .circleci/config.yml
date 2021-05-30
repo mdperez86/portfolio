@@ -49,17 +49,41 @@ jobs:
           name: Run Tests
           command: npm run test
 
+  deploy:
+    machine: true
+    parameters:
+      app_name:
+        type: string
+        default: ${HEROKU_APP_NAME}
+    steps:
+      - checkout
+      - run:
+          name: Build and deploy Docker image to Heroku
+          command: |
+            set -x
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a << parameters.app_name >> web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a << parameters.app_name >> web
+
 workflows:
-  orb-free-workflow:
+  staging:
     jobs:
       - lint
-      - test
-      - cypress/install
+      - test:
+          requires:
+            - lint
+      - cypress/install:
+          requires:
+            - lint
       - cypress/run:
           command: npm run e2e
           requires:
             - cypress/install
           parallel: true
           parallelism: 4
-        
-
+      - deploy:
+          requires:
+            - lint
+            - test
+            - cypress/run

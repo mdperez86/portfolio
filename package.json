@@ -1,12 +1,12 @@
 {
-  "name": "md-portfolio",
+  "name": "portfolio",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
     "dev": "nx serve",
-    "start": "nx serve --prod",
-    "build": "nx build",
+    "start": "nx serve --prod --port $PORT",
+    "build": "nx build --prod",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e portfolio-e2e",
