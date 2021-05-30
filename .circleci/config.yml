@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/node:14
+      - image: node:lts-alpine
     steps:
       - checkout
       - restore_cache:
