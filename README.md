@@ -1,6 +1,8 @@
+[![Portfolio](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
+[![Portfolio](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/4hy8wi/master&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/4hy8wi/runs)
+[![Portfolio](https://circleci.com/gh/mdperez86/portfolio.svg?style=svg)](https://circleci.com/gh/mdperez86/portfolio/?branch=master)
 
-
-# MdPortfolio
+# Portfolio
 
 This project was generated using [Nx](https://nx.dev).
 
