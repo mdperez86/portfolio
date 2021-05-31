@@ -79,7 +79,9 @@
           "options": {
             "cypressConfig": "apps/portfolio-e2e/cypress.json",
             "tsConfig": "apps/portfolio-e2e/tsconfig.e2e.json",
-            "devServerTarget": "portfolio:serve"
+            "devServerTarget": "portfolio:serve",
+            "record": true,
+            "key": "d1e98251-8ad5-4ba2-95eb-881d424cd53a"
           },
           "configurations": {
             "production": {
