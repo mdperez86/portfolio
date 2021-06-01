@@ -1,7 +1,11 @@
-import { getGreeting } from '../support/app.po';
+import { getGreeting, getTitle } from '../support/app.po';
 
 describe('portfolio', () => {
   beforeEach(() => cy.visit('/'));
+
+  it('should set the correct title message', () => {
+    getTitle().contains('Welcome to portfolio!');
+  });
 
   it('should display welcome message', () => {
     // Custom command example, see `../support/commands.ts` file

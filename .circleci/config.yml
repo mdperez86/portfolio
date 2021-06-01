@@ -74,16 +74,17 @@ workflows:
           requires:
             - lint
       - cypress/install:
+          build: npm run build
           requires:
             - lint
       - cypress/run:
-          command: npm run e2e
+          command: npm run e2e -- --group=CircleCI --record --key=${CYPRESS_RECORD_KEY} --ci-build-id=${CIRCLE_WORKFLOW_ID}-${CIRCLE_BUILD_NUM} -- --parallel
           requires:
             - cypress/install
+          record: true
           parallel: true
           parallelism: 4
       - deploy:
           requires:
-            - lint
             - test
             - cypress/run
