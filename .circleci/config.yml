@@ -80,10 +80,10 @@ workflows:
           command: npm run e2e
           requires:
             - cypress/install
+          record: true
           parallel: true
           parallelism: 4
       - deploy:
           requires:
-            - lint
             - test
             - cypress/run
