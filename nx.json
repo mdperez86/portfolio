@@ -25,6 +25,9 @@
     "portfolio-e2e": {
       "tags": [],
       "implicitDependencies": ["portfolio"]
+    },
+    "md-react-components": {
+      "tags": []
     }
   }
 }

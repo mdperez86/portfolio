@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header } from '@md/react-components';
 
 import styles from './index.module.scss';
 
@@ -10,6 +11,7 @@ export function Index() {
    */
   return (
     <div className={styles.page}>
+      <Header />
       <h2>Resources &amp; Tools</h2>
       <p>Thank you for using and showing some ♥ for Nx.</p>
       <div className="flex github-star-container">
