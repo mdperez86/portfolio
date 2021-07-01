@@ -1,26 +1,46 @@
-import React from 'react';
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import { ReactComponent as NxLogo } from '../public/nx-logo-white.svg';
-import './styles.css';
+import React, { useEffect } from 'react';
+import App, { AppContext, AppProps } from 'next/app';
+import { CssBaseline } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+import { TranslationProvider } from '@md/contexts/Translation';
+
+import theme from '@md/themes/main';
+
+const CustomApp = (props: CustomAppProps) => {
+  const { Component, pageProps, trans } = props;
+
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
-    <>
-      <Head>
-        <title>Welcome to portfolio!</title>
-      </Head>
-      <div className="app">
-        <header className="flex">
-          <NxLogo width="75" height="50" />
-          <h1>Welcome to portfolio!</h1>
-        </header>
-        <main>
-          <Component {...pageProps} />
-        </main>
-      </div>
-    </>
+    <TranslationProvider value={trans}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </TranslationProvider>
   );
+};
+
+CustomApp.getInitialProps = async (appContext: AppContext) => {
+  const { router } = appContext;
+
+  const appProps = await App.getInitialProps(appContext);
+
+  const trans = await import(`../locales/${router.locale}.json`)
+    .then(trans => trans.default);
+
+  return { ...appProps, trans }
 }
+
+type CustomAppProps = AppProps & {
+  trans: unknown;
+};
 
 export default CustomApp;

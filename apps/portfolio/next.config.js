@@ -7,4 +7,9 @@ module.exports = withNx({
     // See: https://github.com/gregberge/svgr
     svgr: true,
   },
+  i18n: {
+    locales: ['en-US', 'es-CL'],
+    defaultLocale: 'en-US',
+    localeDetection: true,
+  },
 });

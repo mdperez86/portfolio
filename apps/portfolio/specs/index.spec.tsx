@@ -3,6 +3,10 @@ import { render } from '@testing-library/react';
 
 import Index from '../pages/index';
 
+jest.mock('@app/components/templates/MainTemplate', () => ({
+  MainTemplate: () => null,
+}));
+
 describe('Index', () => {
   it('should render successfully', () => {
     const { baseElement } = render(<Index />);
