@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { MainTemplate } from '@md/components/templates/MainTemplate';
+import { MainTemplate } from '../components/templates/MainTemplate';
 
 const IndexPage = (props: IndexPageProps) => {
   return (

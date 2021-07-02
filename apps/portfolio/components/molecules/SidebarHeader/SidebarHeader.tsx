@@ -17,5 +17,5 @@ export const SidebarHeader = (props: SidebarHeaderProps) => {
 };
 
 type SidebarHeaderProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };

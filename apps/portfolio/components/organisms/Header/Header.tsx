@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, IconButton, Toolbar, Typography, Hidden } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { LocaleMenu } from '@md/components/molecules/LocaleMenu';
+import { LocaleMenu } from '../../molecules/LocaleMenu';
 
 export const Header = (props: HeaderProps) => {
   const { title, onClick } = props;

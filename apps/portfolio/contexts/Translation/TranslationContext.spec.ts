@@ -7,7 +7,7 @@ describe('TranslationContext', () => {
       TranslationContext, 
       TranslationProvider,
       TranslationConsumer,
-    } = await import('@md/contexts/Translation');
+    } = await import('../../contexts/Translation');
     
     expect(createContext).toHaveBeenCalled();
     expect(TranslationContext).toBeTruthy();

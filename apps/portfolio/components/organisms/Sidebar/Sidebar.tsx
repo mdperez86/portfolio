@@ -1,8 +1,11 @@
 import React from 'react';
 import { Drawer, useMediaQuery, useTheme } from '@material-ui/core';
 
+import { SidebarHeader } from '../../molecules/SidebarHeader';
+import { SidebarContent } from '../../molecules/SidebarContent';
+import { SidebarFooter } from '../../molecules/SidebarFooter';
+
 import { useStyles } from './Sidebar.styles';
-import { SidebarHeader } from '@md/components/molecules/SidebarHeader';
 
 export const Sidebar = (props: SidebarProps) => {
   const { children, toogle, onClose } = props;
@@ -13,7 +16,6 @@ export const Sidebar = (props: SidebarProps) => {
 
   return (
     <Drawer
-      // container={container}
       variant={matchesMobile ? "temporary" : "permanent"}
       open={matchesMobile ? toogle : true}
       onClose={onClose}
@@ -25,10 +27,9 @@ export const Sidebar = (props: SidebarProps) => {
         keepMounted: true, // Better open performance on mobile.
       }}
     >
-      <SidebarHeader>
-        Avatar
-      </SidebarHeader>
-      {children}
+      <SidebarHeader />
+      <SidebarContent />
+      <SidebarFooter />
     </Drawer>
   );
 };

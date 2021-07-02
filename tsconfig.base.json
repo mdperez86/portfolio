@@ -15,12 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@md/react-components": ["libs/md-react-components/src/index.ts"],
-      "@md/components/*": ["apps/portfolio/components/*"],
-      "@md/contexts/*": ["apps/portfolio/contexts/*"],
-      "@md/hooks/*": ["apps/portfolio/hooks/*"],
-      "@md/public/*": ["apps/portfolio/public/*"],
-      "@md/themes/*": ["apps/portfolio/themes/*"]
+      "@md/react-components": ["libs/md-react-components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { FlagIcon } from '@md/components/atoms/FlagIcon';
+import { FlagIcon } from './FlagIcon';
 
 describe('<FlagIcon />', () => {
   const locale = 'en-US';

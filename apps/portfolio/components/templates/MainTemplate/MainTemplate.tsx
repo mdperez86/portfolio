@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { Container } from '@material-ui/core';
 
-import { useTranslation } from '@md/hooks/useTranslation';
-import { Header } from '@md/components/organisms/Header';
-import { Sidebar } from '@md/components/organisms/Sidebar';
+import { useTranslation } from '../../../hooks/useTranslation';
+import { Header } from '../../organisms/Header';
+import { Sidebar } from '../../organisms/Sidebar';
 import { useStyles } from './MainTemplate.styles';
 
 export const MainTemplate = (props: MainTemplate) => {

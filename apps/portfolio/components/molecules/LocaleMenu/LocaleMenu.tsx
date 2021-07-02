@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, IconButton, Menu, MenuItem } from '@material-ui/core';
 
-import { FlagIcon } from '@md/components/atoms/FlagIcon';
+import { FlagIcon } from '../../atoms/FlagIcon';
 
-import { useTranslation } from '@md/hooks/useTranslation';
+import { useTranslation } from '../../../hooks/useTranslation';
 
 export const LocaleMenu = (props: LocaleMenuProps) => {
   const { id } = props;

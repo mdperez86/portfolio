@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from './useTranslation';
 
-import { TranslationContext } from '@md/contexts/Translation';
+import { TranslationContext } from '../../contexts/Translation';
 
-jest.mock('@app/contexts/Translation', () => ({
+jest.mock('../../contexts/Translation', () => ({
   TranslationContext: jest.fn(),
 }));
 
