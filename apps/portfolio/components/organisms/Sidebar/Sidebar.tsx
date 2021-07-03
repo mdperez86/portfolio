@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, useMediaQuery, useTheme } from '@material-ui/core';
+import { Drawer, Paper, useMediaQuery, useTheme } from '@material-ui/core';
 
 import { SidebarHeader } from '../../molecules/SidebarHeader';
 import { SidebarContent } from '../../molecules/SidebarContent';
@@ -27,15 +27,17 @@ export const Sidebar = (props: SidebarProps) => {
         keepMounted: true, // Better open performance on mobile.
       }}
     >
-      <SidebarHeader />
-      <SidebarContent />
-      <SidebarFooter />
+      <Paper className={classes.paper}>
+        <SidebarHeader />
+        <SidebarContent />
+        <SidebarFooter />
+      </Paper>
     </Drawer>
   );
 };
 
 type SidebarProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   toogle: boolean;
   onClose: () => void;
 };

@@ -12,4 +12,8 @@ module.exports = withNx({
     defaultLocale: 'en-US',
     localeDetection: true,
   },
+  images: {
+    domains: ['media-exp1.licdn.com'],
+    deviceSizes: [600, 960, 1280, 1920],
+  },
 });

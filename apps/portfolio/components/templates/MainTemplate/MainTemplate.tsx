@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { Container } from '@material-ui/core';
+import Image from 'next/image';
+import { Box, Container, Paper } from '@material-ui/core';
 
 import { useTranslation } from '../../../hooks/useTranslation';
 import { Header } from '../../organisms/Header';
@@ -19,20 +20,35 @@ export const MainTemplate = (props: MainTemplate) => {
   };
 
   return (
-    <Container className={classes.root} maxWidth="xl">
+    <Container className={classes.root} maxWidth="lg">
       <Head>
         <title>{t(title)}</title>
       </Head>
-      <Header title={t(title)} onClick={handleDrawerToggle} />
-      <Sidebar toogle={mobileOpen} onClose={handleDrawerToggle}>
-        Content
-      </Sidebar>
-      <main className={classes.main}>
-        {children}
-      </main>
-      <footer>
 
-      </footer>
+      <Paper elevation={3} className={classes.paper}>
+        
+        <Header title={t(title)} onClick={handleDrawerToggle} />
+        <Sidebar toogle={mobileOpen} onClose={handleDrawerToggle} />
+        
+        <Box flexGrow={1}>
+          <Box className={classes.bgContainer}>
+            <Image 
+              src="/images/top-bg-02.jpg" 
+              width={1200}
+              height={640}
+              layout="fixed"
+              objectFit="cover"
+              objectPosition="50% 54%"
+            />
+            <Box className={classes.bgShadow} />
+          </Box>
+          <Box component="main" className={classes.main}>
+            {children}
+            <footer></footer>
+          </Box>
+        </Box>
+      </Paper>
+
     </Container>
   );
 };

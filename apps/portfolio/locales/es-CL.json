@@ -1,5 +1,11 @@
 {
-  "page.index.title": "Bienvenido a nextjs-app!",
+  "page.index.title": "MD",
   "locale.en-US": "Inglés",
-  "locale.es-CL": "Español"
+  "locale.es-CL": "Español",
+  "shortPersonalInfo.residence.text": "Residencia",
+  "shortPersonalInfo.residence.value": "Chile",
+  "shortPersonalInfo.city.text": "Ciudad",
+  "shortPersonalInfo.city.value": "Santiago",
+  "shortPersonalInfo.age.text": "Edad",
+  "button.downloadCV.text": "Descargar CV"
 }

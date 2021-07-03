@@ -1,18 +1,29 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const main = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Poppins',
+      'sans-serif',
+    ].join(','),
+  },
   palette: {
     type: 'dark',
     primary: {
       main: '#20202a',
+      dark: '#1e1e28',
     },
     secondary: {
       main: '#ffc107',
     },
     background: {
       default: '#191923',
-      paper: '#8c8c8e',
+      paper: '#20202a',
     },
+    text: {
+      primary: '#fafafc',
+      secondary: '#8c8c8e',
+    }
   },
   overrides: {
     MuiCssBaseline: {
@@ -36,8 +47,7 @@ const main = createMuiTheme({
     },
     MuiPaper: {
       root: {
-        backgroundColor: '#20202a',
-        boxShadow: '0 3px 8px 0 rgb(15 15 20 / 20%)',
+        backgroundImage: 'linear-gradient(159deg, #2d2d3a 0%, #2b2b35 100%)',
       },
     },
   },

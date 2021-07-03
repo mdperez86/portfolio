@@ -19,14 +19,13 @@ export const SpeakingLanguages = (props: SpeakingLanguagesProps) => {
   const t = useTranslation();
 
   return (
-    <Box display="flex" justifyContent="space-around" paddingY={3}>
+    <Box display="flex" justifyContent="space-around" marginY={3}>
       {speakingLanguages.map(({ name, value }, index) => (
         <Box key={index}>
           <CircularProgressWithLabel value={value} />
           <Typography 
             variant="caption" 
-            component="div" 
-            color="textSecondary"
+            component="div"
             align="center"
           >
             {t(name)}
