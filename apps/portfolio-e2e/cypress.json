@@ -9,5 +9,7 @@
   "video": true,
   "videosFolder": "../../dist/cypress/apps/portfolio-e2e/videos",
   "screenshotsFolder": "../../dist/cypress/apps/portfolio-e2e/screenshots",
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "pageLoadTimeout": 90000,
+  "responseTimeout": 90000
 }

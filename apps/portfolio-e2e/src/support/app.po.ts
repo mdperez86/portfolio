@@ -1,2 +1,2 @@
 export const getTitle = () => cy.get('title');
-export const getGreeting = () => cy.get('h1');
+export const getH1 = () => cy.get('h1');

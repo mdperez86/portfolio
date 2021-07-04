@@ -1,5 +1,14 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
+const victorMono = {
+  fontFamily: 'VictorMono',
+  src: `
+    local('VictorMono Nerd Font Mono'),
+    local('VictorMono Nerd Font Mono, SemiBold Italic'),
+    url('/fonts/VictorMono-SemiBold-Italic.ttf') format('truetype')
+  `,
+};
+
 const main = createMuiTheme({
   typography: {
     fontFamily: [
@@ -28,6 +37,7 @@ const main = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
+        '@font-face': [victorMono as unknown],
         html: {
           WebkitFontSmoothing: 'auto',
           height: '100%',

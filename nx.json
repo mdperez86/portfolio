@@ -19,15 +19,23 @@
     }
   },
   "projects": {
+    "md-react-components": {
+      "tags": []
+    },
     "portfolio": {
       "tags": []
     },
     "portfolio-e2e": {
       "tags": [],
       "implicitDependencies": ["portfolio"]
-    },
-    "md-react-components": {
-      "tags": []
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

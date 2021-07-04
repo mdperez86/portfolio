@@ -18,6 +18,48 @@
     }
   },
   "projects": {
+    "md-react-components": {
+      "root": "libs/md-react-components",
+      "sourceRoot": "libs/md-react-components/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/md-react-components",
+            "tsConfig": "libs/md-react-components/tsconfig.lib.json",
+            "project": "libs/md-react-components/package.json",
+            "entryFile": "libs/md-react-components/src/index.ts",
+            "external": ["react", "react-dom", "react-is", "styled-components"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/md-react-components/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/md-react-components/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/md-react-components"],
+          "options": {
+            "jestConfig": "libs/md-react-components/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "portfolio": {
       "root": "apps/portfolio",
       "sourceRoot": "apps/portfolio",
@@ -91,48 +133,6 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/portfolio-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "md-react-components": {
-      "root": "libs/md-react-components",
-      "sourceRoot": "libs/md-react-components/src",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/md-react-components",
-            "tsConfig": "libs/md-react-components/tsconfig.lib.json",
-            "project": "libs/md-react-components/package.json",
-            "entryFile": "libs/md-react-components/src/index.ts",
-            "external": ["react", "react-dom", "react-is", "styled-components"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "libs/md-react-components/README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/md-react-components/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/md-react-components"],
-          "options": {
-            "jestConfig": "libs/md-react-components/jest.config.js",
-            "passWithNoTests": true
           }
         }
       }

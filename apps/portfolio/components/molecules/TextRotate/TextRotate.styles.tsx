@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     font: {
-      fontFamily: '"Ubuntu Mono", monospace',
+      fontFamily: '"VictorMono", monospace',
       fontSize: 14,
     },
   }),

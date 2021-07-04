@@ -4,6 +4,6 @@ describe('portfolio', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should set the correct h2 message', () => {
-    getH2().should('have.length', 2);
+    getH2().should('not.exist');
   });
 });
