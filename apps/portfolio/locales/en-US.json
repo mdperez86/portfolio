@@ -1,5 +1,5 @@
 {
-  "page.index.title": "MD",
+  "page.index.title": "Discover my modest web space!",
   "locale.en-US": "English",
   "locale.es-CL": "Spanish",
   "shortPersonalInfo.residence.text": "Residence",
@@ -7,5 +7,9 @@
   "shortPersonalInfo.city.text": "City",
   "shortPersonalInfo.city.value": "Santiago",
   "shortPersonalInfo.age.text": "Age",
-  "button.downloadCV.text": "Download CV"
+  "button.downloadCV.text": "Download CV",
+  "heore.rotate.0.text": "I build web apps with React or Angular.",
+  "heore.rotate.1.text": "I build backends with NextJS, NestJS and/or Express.",
+  "heore.rotate.2.text": "I build SPA/PWA with Client/Server Side Rendering.",
+  "heore.rotate.3.text": "I build your web with the best tecnologies."
 }

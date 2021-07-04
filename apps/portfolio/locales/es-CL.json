@@ -1,5 +1,5 @@
 {
-  "page.index.title": "MD",
+  "page.index.title": "¡Descubre mi modesto espacio!",
   "locale.en-US": "Inglés",
   "locale.es-CL": "Español",
   "shortPersonalInfo.residence.text": "Residencia",
@@ -7,5 +7,9 @@
   "shortPersonalInfo.city.text": "Ciudad",
   "shortPersonalInfo.city.value": "Santiago",
   "shortPersonalInfo.age.text": "Edad",
-  "button.downloadCV.text": "Descargar CV"
+  "button.downloadCV.text": "Descargar CV",
+  "heore.rotate.0.text": "Desarrollo aplicaciones web con React o Angular.",
+  "heore.rotate.1.text": "Desarrollo backends con NextJS, NestJS y/o Express.",
+  "heore.rotate.2.text": "Desarrollo SPA/PWA con Client/Server Side Rendering.",
+  "heore.rotate.3.text": "Desarrollo tu Web con las mejores tecnologías."
 }
