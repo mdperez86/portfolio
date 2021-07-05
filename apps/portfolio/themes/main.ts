@@ -40,13 +40,11 @@ const main = createMuiTheme({
         '@font-face': [victorMono as unknown],
         html: {
           WebkitFontSmoothing: 'auto',
-          height: '100%',
         },
         body: {
-          height: '100%',
         },
         '#__next': {
-          height: '100%',
+          height: '100vh',
         },
       },
     },

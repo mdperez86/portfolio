@@ -10,7 +10,6 @@ export const useStyles = makeStyles((theme: Theme) =>
       paddingRight: 0,
       height: '100%',
       [theme.breakpoints.up('sm')]: {
-        height: '100%',
         padding: theme.spacing(2),
         marginTop: 0,
       },
@@ -23,23 +22,32 @@ export const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       height: '100%',
     },
+    wrapper: {
+      position: 'relative',
+      overflowX: 'hidden',
+      overflowY: 'auto',
+      height: '100vh',
+      [theme.breakpoints.up('sm')]: {
+        height: '100%',
+      },
+    },
     bgContainer: {
       position: 'absolute',
       width: '100%',
-      height: 640,
+      height: '100%',
+      overflow: 'hidden',
     },
     bgShadow: {
       top: 0,
       position: 'absolute',
-      width: '100%',
-      height: 640,
-      backgroundImage: `linear-gradient(180deg, rgba(30, 30, 40, 0.63) 0%, rgba(30, 30, 40, 0.96) 70%, rgba(30, 30, 40, 0.99) 80%, ${theme.palette.primary.dark} 100%)`,
+      width: '110%',
+      height: '110%',
+      backgroundImage: `linear-gradient(180deg, rgba(30, 30, 40, 0.63) 0%, rgba(30, 30, 40, 0.96) 50%, rgba(30, 30, 40, 1) 60%, ${theme.palette.primary.dark} 100%)`,
     },
     main: {
+      position: 'relative',
       zIndex: 1,
-      flexGrow: 1,
       padding: theme.spacing(2),
-      boxShadow: '0 3px 8px 0 rgb(15 15 20 / 20%)',
     },
   }),
 );

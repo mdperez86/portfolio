@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, Paper, useMediaQuery, useTheme } from '@material-ui/core';
+import { Box, Drawer, Paper, useMediaQuery, useTheme } from '@material-ui/core';
 
 import { SidebarHeader } from '../../molecules/SidebarHeader';
 import { SidebarContent } from '../../molecules/SidebarContent';
@@ -28,8 +28,10 @@ export const Sidebar = (props: SidebarProps) => {
       }}
     >
       <Paper className={classes.paper}>
-        <SidebarHeader />
-        <SidebarContent />
+        <Box overflow="auto">
+          <SidebarHeader />
+          <SidebarContent />
+        </Box>
         <SidebarFooter />
       </Paper>
     </Drawer>

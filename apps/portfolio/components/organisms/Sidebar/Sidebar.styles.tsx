@@ -16,6 +16,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       overflow: 'hidden',
       backgroundImage: 'none',
+      justifyContent: 'space-between',
     },
     drawerPaper: {
       width: '80%',

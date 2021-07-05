@@ -6,6 +6,8 @@ import { Box, Container, Paper } from '@material-ui/core';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { Header } from '../../organisms/Header';
 import { Sidebar } from '../../organisms/Sidebar';
+import { Footer } from '../../organisms/Footer';
+
 import { useStyles } from './MainTemplate.styles';
 
 export const MainTemplate = (props: MainTemplate) => {
@@ -30,7 +32,7 @@ export const MainTemplate = (props: MainTemplate) => {
         <Header title={t(title)} onClick={handleDrawerToggle} />
         <Sidebar toogle={mobileOpen} onClose={handleDrawerToggle} />
         
-        <Box flexGrow={1}>
+        <Box className={classes.wrapper}>
           <Box className={classes.bgContainer}>
             <Image 
               src="/images/top-bg-02.jpg" 
@@ -44,7 +46,7 @@ export const MainTemplate = (props: MainTemplate) => {
           </Box>
           <Box component="main" className={classes.main}>
             {children}
-            <footer></footer>
+            <Footer />
           </Box>
         </Box>
       </Paper>
