@@ -1,11 +1,16 @@
-import React from 'react';
-import { Box, Button, Grid, Paper, Typography, TextField } from '@material-ui/core';
+import React, { useState } from 'react';
+import { CircularProgress, Box, Button, Grid, Paper, Typography, TextField } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+import AlertTitle from '@material-ui/lab/AlertTitle';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
 
 import { useTranslation } from '../../../hooks/useTranslation';
 
 export const HireForm = (props: HireFormProps) => {
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
   const t = useTranslation();
 
   const validationSchema = yup.object({
@@ -30,8 +35,19 @@ export const HireForm = (props: HireFormProps) => {
     },
     enableReinitialize: true,
     validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values, helpers) => {
+      setSent(false);
+      setError(false);
+      helpers.setSubmitting(true);
+      axios.post('/api/send-mail', values).then((response) => {
+        setSent(true);
+        formik.resetForm({});
+      }).catch(error => {
+        console.error(error);
+        setError(true);
+      }).finally(() => {
+        helpers.setSubmitting(false);
+      });
     },
   });
 
@@ -43,6 +59,22 @@ export const HireForm = (props: HireFormProps) => {
             {t('hireForm.title')}
           </Typography>
         </Box>
+        {sent && (
+          <Box mb={2}>
+            <Alert variant="filled" severity="success">
+              <AlertTitle>Success</AlertTitle>
+              This is a success alert — <strong>check it out!</strong>
+            </Alert>
+          </Box>
+        )}
+        {error && (
+          <Box mb={2}>
+            <Alert variant="filled" severity="error">
+              <AlertTitle>Error</AlertTitle>
+              This is an error alert — <strong>check it out!</strong>
+            </Alert>
+          </Box>
+        )}
         <Grid
           component="form"
           container
@@ -93,7 +125,13 @@ export const HireForm = (props: HireFormProps) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button type="submit" variant="outlined" color="secondary" size="large">
+            <Button type="submit" variant="outlined" color="secondary" size="large" disabled={formik.isSubmitting}>
+              {formik.isSubmitting && (
+                <>
+                  <CircularProgress color="secondary" size={20} />
+                  &nbsp;
+                </> 
+              )}
               {t('hireForm.button.text')}
             </Button>
           </Grid>
