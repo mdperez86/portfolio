@@ -13,5 +13,15 @@
   "heore.rotate.2.text": "I build SPA/PWA with Client/Server Side Rendering.",
   "heore.rotate.3.text": "I build your web with the best tecnologies.",
   "heore.button.explore.text": "Explore now",
-  "heore.button.hire.text": "Hire me"
+  "heore.button.hire.text": "Hire me",
+  "hireForm.title": "Hire me",
+  "hireForm.name.label": "Name",
+  "hireForm.name.required": "Name is required",
+  "hireForm.email.label": "Email",
+  "hireForm.email.type": "Enter a valid email",
+  "hireForm.email.required": "Email is required",
+  "hireForm.message.label": "Message",
+  "hireForm.message.required": "Message is required",
+  "hireForm.message.max": "Message should be of maximum 300 characters length",
+  "hireForm.button.text": "Submit"
 }

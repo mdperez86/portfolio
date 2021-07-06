@@ -48,7 +48,7 @@ export const Heroe = (props: HeroeProps) => {
             <Button href="#portfolio" variant="contained" color="secondary" size="large" disableElevation>
               {t('heore.button.explore.text')}
             </Button>{' '}
-            <Button href="#contact" color="secondary" size="large">
+            <Button href={`#${t('hireForm.title')}`} color="secondary" size="large">
               {t('heore.button.hire.text')} {'->'}
             </Button>
           </Box>
