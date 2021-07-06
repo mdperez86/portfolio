@@ -21,5 +21,10 @@ export const useStyles = makeStyles((theme: Theme) =>
       height: '100%',
       backgroundImage: 'linear-gradient(180deg, rgba(45, 45, 58, 0.6) 15%, rgba(45, 45, 58, 0.7) 50%, rgba(43, 43, 53, 0.7) 100%)',
     },
+    textRotate: {
+      minHeight: '7rem',
+      display: 'flex',
+      alignItems: 'center',
+    }
   }),
 );

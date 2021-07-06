@@ -1,8 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import { Box, Typography, Card, Button } from '@material-ui/core';
+import { Box, Typography, Card, Button, Hidden } from '@material-ui/core';
 
 import { useTranslation } from '../../../hooks/useTranslation';
+import { LocaleMenu } from '../LocaleMenu';
 import { TextRotate } from '../TextRotate';
 import { useStyles } from './Heroe.styles';
 
@@ -31,14 +32,24 @@ export const Heroe = (props: HeroeProps) => {
         <Box className={classes.bgShadow} />
       </Box>
       <Box p={6} position="relative">
+        <Hidden xsDown>
+          <Box position="absolute" top="0" right="1rem">
+            <LocaleMenu id="locale-menu" />
+          </Box>
+        </Hidden>
         <Box display="flex" flexDirection="column" justifyItems="center">
           <Typography component="h1" variant="h3">
             {t(title)}
           </Typography>
-          <TextRotate rotate={rotationTexts} />
+          <Box className={classes.textRotate}>
+            <TextRotate rotate={rotationTexts} />
+          </Box>
           <Box>
-            <Button variant="contained" color="secondary" size="large" disableElevation>
-              Disable elevation
+            <Button href="#portfolio" variant="contained" color="secondary" size="large" disableElevation>
+              {t('heore.button.explore.text')}
+            </Button>{' '}
+            <Button href="#contact" color="secondary" size="large">
+              {t('heore.button.hire.text')} {'->'}
             </Button>
           </Box>
         </Box>

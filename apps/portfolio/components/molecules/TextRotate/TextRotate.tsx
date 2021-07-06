@@ -86,7 +86,7 @@ export const TextRotate = (props: TextRotateProps) => {
   }, [rotate, currentIndex, position]);
 
   return (
-    <Box className={classes.root} py={3}>
+    <Box className={classes.root} py={2}>
       <Typography component="p" className={classes.font}>
         {'<'}<Typography className={classes.font} component="span" color="secondary">code</Typography>{'> '}
         {currentText}
