@@ -22,7 +22,7 @@ const validationSchema: SchemaOf<RequestDTO> = object({
 }).defined();
 
 const sendMail = async (response: RequestDTO) => {
-  let transporterOptions = {
+  const transporterOptions = {
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT),
     secure: Boolean(process.env.SMTP_SECURE),
@@ -39,19 +39,6 @@ const sendMail = async (response: RequestDTO) => {
     text: response.message, // plain text body
     html: response.message, // html body
   };
-
-  if (process.env.NODE_ENV !== 'production') {
-    const testAccount = await mailer.createTestAccount();
-    transporterOptions = {
-      host: 'smtp.ethereal.email',
-      port: 587,
-      secure: false,
-      auth: {
-        user: testAccount.user, // generated ethereal user
-        pass: testAccount.pass, // generated ethereal password
-      },
-    };
-  }
 
   const transporter = mailer.createTransport(transporterOptions);
   const info = await transporter.sendMail(emailOptions);
@@ -72,23 +59,32 @@ type ReCaptchaRequestDTO = {
 
 type ReCaptchaResponseDTO = {
   success: boolean;
-  challenge_ts: string;  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
-  hostname: string;         // the hostname of the site where the reCAPTCHA was solved
+  challenge_ts: string; // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+  hostname: string; // the hostname of the site where the reCAPTCHA was solved
+  score: number;
+  action: string;
   'error-codes': [];
 };
 
-const verifyReCaptcha = async (token: string): Promise<void> => {
-  const req: ReCaptchaRequestDTO = {
-    secret: process.env.RECAPTCHA_SECRET_KEY,
-    response: token,
-  };
-  return axios.post<ReCaptchaRequestDTO, AxiosResponse<ReCaptchaResponseDTO>>(
-    process.env.RECAPTCHA_VERIFY_URL,
-    req
-  ).then(({ data }) => {
-    console.log('verifyReCaptcha', data);
-    throw new ValidationError('reCaptcha.error.message');
-  });
+const verifyReCaptcha = async (token: string): Promise<ReCaptchaResponseDTO> => {
+  const params = new URLSearchParams();
+  params.append('secret', process.env.RECAPTCHA_SECRET_KEY);
+  params.append('response', token);
+
+  return axios
+    .post<ReCaptchaRequestDTO, AxiosResponse<ReCaptchaResponseDTO>>(
+      process.env.RECAPTCHA_VERIFY_URL,
+      params,
+      {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      }
+    )
+    .then(({ data }) => {
+      console.log('verifyReCaptcha', data);
+      if (data.success)
+        return data;
+      throw new ValidationError('reCaptcha.error.message');
+    });
 };
 
 export default async (
