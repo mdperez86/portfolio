@@ -8,11 +8,13 @@ import { SidebarFooter } from '../../molecules/SidebarFooter';
 import { useStyles } from './Sidebar.styles';
 
 export const Sidebar = (props: SidebarProps) => {
-  const { children, toogle, onClose } = props;
+  const { toogle, onClose } = props;
 
   const classes = useStyles();
   const theme = useTheme();
-  const matchesMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const matchesMobile = useMediaQuery(theme.breakpoints.down('xs'), {
+    defaultMatches: true,
+  });
 
   return (
     <Drawer
@@ -24,7 +26,7 @@ export const Sidebar = (props: SidebarProps) => {
         paper: classes.drawerPaper,
       }}
       ModalProps={{
-        keepMounted: true, // Better open performance on mobile.
+        keepMounted: matchesMobile, // Better open performance on mobile.
       }}
     >
       <Paper className={classes.paper}>
@@ -39,7 +41,6 @@ export const Sidebar = (props: SidebarProps) => {
 };
 
 type SidebarProps = {
-  children?: React.ReactNode;
   toogle: boolean;
   onClose: () => void;
 };

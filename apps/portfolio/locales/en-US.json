@@ -29,5 +29,8 @@
   "hireForm.alert.success.message": "Thanks for contacting me. I answer you immediately.",
   "hireForm.alert.error.title": "Error",
   "hireForm.alert.error.message": "It was not possible to send the mail. Please try one more time in a few minutes.",
-  "reCaptcha.error.message": "Captcha verification has failed."
+  "reCaptcha.error.message": "Captcha verification has failed.",
+  "sidebarFooter.linkedin.ariaLabel": "Follow me in LinkedIn",
+  "sidebarFooter.github.ariaLabel": "Follow me in GitHub",
+  "sidebarFooter.hackerrank.ariaLabel": "Follow me in Hackerrank"
 }

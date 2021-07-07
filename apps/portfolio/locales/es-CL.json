@@ -29,5 +29,8 @@
   "hireForm.alert.success.message": "Gracias por contactarme. Te respondo de inmediato.",
   "hireForm.alert.error.title": "Error",
   "hireForm.alert.error.message": "No fue posible enviar el correo. Por favor, inténtalo una vez más en unos minutos.",
-  "reCaptcha.error.message": "La verificación de Captcha ha fallado."
+  "reCaptcha.error.message": "La verificación de Captcha ha fallado.",
+  "sidebarFooter.linkedin.ariaLabel": "Sígueme en LinkedIn",
+  "sidebarFooter.github.ariaLabel": "Sígueme en GitHub",
+  "sidebarFooter.hackerrank.ariaLabel": "Sígueme en Hackerrank"
 }
