@@ -1,4 +1,5 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+// import type '@material-ui/lab/themeAugmentation';
 
 const victorMono = {
   fontFamily: 'VictorMono',

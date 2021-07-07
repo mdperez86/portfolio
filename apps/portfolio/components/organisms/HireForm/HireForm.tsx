@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { CircularProgress, Box, Button, Grid, Paper, Typography, TextField } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
@@ -8,9 +9,11 @@ import axios from 'axios';
 
 import { useTranslation } from '../../../hooks/useTranslation';
 
+declare const grecaptcha: any;
+
 export const HireForm = (props: HireFormProps) => {
   const [sent, setSent] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const t = useTranslation();
 
   const validationSchema = yup.object({
@@ -37,22 +40,41 @@ export const HireForm = (props: HireFormProps) => {
     validationSchema,
     onSubmit: (values, helpers) => {
       setSent(false);
-      setError(false);
+      setError('');
       helpers.setSubmitting(true);
-      axios.post('/api/send-mail', values).then((response) => {
-        setSent(true);
-        formik.resetForm({});
-      }).catch(error => {
-        console.error(error);
-        setError(true);
+      validateReCaptcha().then(async (reCaptcha: string) => {
+        return axios.post('/api/send-mail', { ...values, reCaptcha }).then(() => {
+          setSent(true);
+          formik.resetForm({});
+        });
+      }).catch((error) => {
+        if (error.response) {
+          setError(error.response.data.message);
+          return;
+        }
+        setError('hireForm.alert.error.message');
       }).finally(() => {
         helpers.setSubmitting(false);
       });
     },
   });
 
+  const validateReCaptcha = (): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      grecaptcha.ready(() => {
+        grecaptcha.execute(
+          process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+          { action: 'submit' },
+        ).then(resolve).catch(reject);
+      });
+    });
+  };
+
   return (
     <Paper id={t('hireForm.title') as string} component="section">
+      <Head>
+        <script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}></script>
+      </Head>
       <Box p={2}>
         <Box mb={2}>
           <Typography component="h3" variant="h6">
@@ -62,16 +84,16 @@ export const HireForm = (props: HireFormProps) => {
         {sent && (
           <Box mb={2}>
             <Alert variant="filled" severity="success">
-              <AlertTitle>Success</AlertTitle>
-              This is a success alert — <strong>check it out!</strong>
+              <AlertTitle>{t('hireForm.alert.success.title')}</AlertTitle>
+              {t('hireForm.alert.success.message')}
             </Alert>
           </Box>
         )}
         {error && (
           <Box mb={2}>
             <Alert variant="filled" severity="error">
-              <AlertTitle>Error</AlertTitle>
-              This is an error alert — <strong>check it out!</strong>
+              <AlertTitle>{t('hireForm.alert.error.title')}</AlertTitle>
+              {t(error)}
             </Alert>
           </Box>
         )}
@@ -130,7 +152,7 @@ export const HireForm = (props: HireFormProps) => {
                 <>
                   <CircularProgress color="secondary" size={20} />
                   &nbsp;
-                </> 
+                </>
               )}
               {t('hireForm.button.text')}
             </Button>

@@ -23,5 +23,10 @@
   "hireForm.message.label": "Mensaje",
   "hireForm.message.required": "El mensaje es obligatorio",
   "hireForm.message.max": "El mensaje super el máximo de 300 caracteres",
-  "hireForm.button.text": "Enviar"
+  "hireForm.button.text": "Enviar",
+  "hireForm.alert.success.title": "Genial!!!",
+  "hireForm.alert.success.message": "Gracias por contactarme. Te respondo de inmediato.",
+  "hireForm.alert.error.title": "Error",
+  "hireForm.alert.error.message": "No fue posible enviar el correo. Por favor, inténtalo una vez más en unos minutos.",
+  "reCaptcha.error.message": "La verificación de Captcha ha fallado."
 }
