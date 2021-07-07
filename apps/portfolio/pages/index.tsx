@@ -9,7 +9,7 @@ import { Heroe } from '../components/molecules/Heroe';
 const IndexPage = (props: IndexPageProps) => {
   return (
     <MainTemplate title="page.index.title">
-      <Heroe title="page.index.title" />
+      <Heroe title="page.index.h1.text" />
       <Box my={3}>
         <HireForm />
       </Box>

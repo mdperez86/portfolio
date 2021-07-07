@@ -83,7 +83,7 @@ export const HireForm = (props: HireFormProps) => {
         </Box>
         {sent && (
           <Box mb={2}>
-            <Alert variant="filled" severity="success">
+            <Alert variant="outlined" severity="success">
               <AlertTitle>{t('hireForm.alert.success.title')}</AlertTitle>
               {t('hireForm.alert.success.message')}
             </Alert>
@@ -91,7 +91,7 @@ export const HireForm = (props: HireFormProps) => {
         )}
         {error && (
           <Box mb={2}>
-            <Alert variant="filled" severity="error">
+            <Alert variant="outlined" severity="error">
               <AlertTitle>{t('hireForm.alert.error.title')}</AlertTitle>
               {t(error)}
             </Alert>

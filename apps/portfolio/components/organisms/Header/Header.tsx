@@ -14,7 +14,7 @@ export const Header = (props: HeaderProps) => {
           <IconButton edge="start" color="inherit" onClick={onClick}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap style={{ flex: '1 0 auto' }}>
+          <Typography variant="h6" component="span" noWrap style={{ flex: '1 1 auto' }}>
             {title}
           </Typography>
           <LocaleMenu id="locale-menu" />

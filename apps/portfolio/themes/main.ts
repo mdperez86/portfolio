@@ -59,6 +59,11 @@ const main = createMuiTheme({
         backgroundImage: 'linear-gradient(159deg, #2d2d3a 0%, #2b2b35 100%)',
       },
     },
+    MuiAlert: {
+      root: {
+        backgroundImage: 'none',
+      },
+    },
   },
 });
 

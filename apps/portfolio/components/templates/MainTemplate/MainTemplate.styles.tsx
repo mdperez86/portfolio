@@ -26,7 +26,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       position: 'relative',
       overflowX: 'hidden',
       overflowY: 'auto',
-      height: '100vh',
+      // height: '100vh',
       [theme.breakpoints.up('sm')]: {
         height: '100%',
       },
@@ -46,7 +46,6 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     main: {
       position: 'relative',
-      zIndex: 1,
       padding: theme.spacing(2),
     },
   }),
