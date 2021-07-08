@@ -41,7 +41,7 @@ export const HireForm = (props: HireFormProps) => {
       setError('');
       helpers.setSubmitting(true);
       validateReCaptcha().then(async (reCaptcha: string) => {
-        return axios.post('/api/send-mail', { ...values, reCaptcha }).then(() => {
+        return axios.post('/api/mails', { ...values, reCaptcha }).then(() => {
           setSent(true);
           formik.resetForm({});
         });

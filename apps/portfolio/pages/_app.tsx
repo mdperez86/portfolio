@@ -3,9 +3,9 @@ import App, { AppContext, AppProps } from 'next/app';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import { TranslationProvider } from '../contexts/Translation';
+import { TranslationProvider } from '../client/contexts/Translation';
 
-import theme from '../themes/main';
+import theme from '../client/themes/main';
 
 const CustomApp = (props: CustomAppProps) => {
   const { Component, pageProps, trans } = props;

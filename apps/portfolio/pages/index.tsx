@@ -2,9 +2,9 @@ import React from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { Box } from '@material-ui/core';
 
-import { MainTemplate } from '../components/templates/MainTemplate';
-import { HireForm } from '../components/organisms/HireForm';
-import { Heroe } from '../components/molecules/Heroe';
+import { MainTemplate } from '../client/components/templates/MainTemplate';
+import { HireForm } from '../client/components/organisms/HireForm';
+import { Heroe } from '../client/components/molecules/Heroe';
 
 const IndexPage = (props: IndexPageProps) => {
   return (

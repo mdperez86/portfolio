@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
 
-import theme from '../themes/main';
+import theme from '../client/themes/main';
 
 export default class CustomDocument extends Document<{
   styleTags: ReactElement[];

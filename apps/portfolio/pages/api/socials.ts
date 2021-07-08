@@ -1,20 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-type ResponseDTO = {
-  linkedin: string;
-  github: string;
-  hackerrank: string;
-};
-
-const socials = {
-  linkedin: process.env.SOCIALS_LINKEDIN_URL,
-  github: process.env.SOCIALS_GITHUB_URL,
-  hackerrank: process.env.SOCIALS_HACKERRANK_URL,
-};
+import { getAll } from '../../server/controllers/socials';
 
 export default async (
   req: NextApiRequest,
-  res: NextApiResponse<ResponseDTO>
+  res: NextApiResponse,
 ) => {
-  return res.status(200).json(socials);
+  if (req.method === 'GET') return getAll(req, res);
+  return res.status(404).json(new Error('Not Found'));
 };

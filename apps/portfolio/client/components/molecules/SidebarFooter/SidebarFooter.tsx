@@ -4,7 +4,7 @@ import { LinkedIn, GitHub } from '@material-ui/icons';
 import axios from 'axios';
 
 import { useTranslation } from '../../../hooks/useTranslation';
-import { ReactComponent as Hackerrank } from '../../../public/icons/hackerrank.svg';
+import { ReactComponent as Hackerrank } from '../../../../public/icons/hackerrank.svg';
 
 import { useStyles } from './SidebarFooter.styles';
 
