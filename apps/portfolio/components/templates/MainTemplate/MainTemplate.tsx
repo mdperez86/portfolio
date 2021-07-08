@@ -17,8 +17,8 @@ export const MainTemplate = (props: MainTemplate) => {
   const t = useTranslation();
   const classes = useStyles();
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const handleDrawerToggle = (toggle: boolean) => {
+    setMobileOpen(toggle);
   };
 
   return (
@@ -27,10 +27,10 @@ export const MainTemplate = (props: MainTemplate) => {
         <title>{t(title)}</title>
       </Head>
 
-      <Paper elevation={3} className={classes.paper}>
+      <Paper elevation={6} className={classes.paper}>
         
-        <Header title={t(title)} onClick={handleDrawerToggle} />
-        <Sidebar toogle={mobileOpen} onClose={handleDrawerToggle} />
+        <Header title={t(title)} onClick={() => handleDrawerToggle(true)} />
+        <Sidebar toggle={mobileOpen} onToggle={handleDrawerToggle} />
         
         <Box className={classes.wrapper}>
           <Box className={classes.bgContainer}>

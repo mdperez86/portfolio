@@ -24,6 +24,7 @@ export const SidebarContent = (props: SidebarContentProps) => {
       <Box mt={3}>
         <Button
           href="https://drive.google.com/file/d/1INlDMvZ_tssh2s6qTpr6aRp9m4GjKEIN/view?usp=sharing"
+          color="secondary"
           size="small"
           endIcon={<CloudDownload />}
           target="_blank"

@@ -1,13 +1,12 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import { Theme } from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '80%',
-      flexShrink: 0,
-      [theme.breakpoints.up('sm')]: {
+      minWidth: 290,
+      [theme.breakpoints.up('md')]: {
         position: 'relative',
-        width: 290,
       },
     },
     paper: {
@@ -15,14 +14,12 @@ export const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
-      backgroundImage: 'none',
       justifyContent: 'space-between',
     },
     drawerPaper: {
-      width: '80%',
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('md')]: {
         position: 'absolute',
-        width: 290,
+        width: '100%',
       },
     },
   }),

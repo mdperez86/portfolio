@@ -32,7 +32,7 @@ export const Heroe = (props: HeroeProps) => {
         <Box className={classes.bgShadow} />
       </Box>
       <Box p={6} position="relative">
-        <Hidden xsDown>
+        <Hidden mdDown>
           <Box position="absolute" top="0" right="1rem">
             <LocaleMenu id="locale-menu" />
           </Box>

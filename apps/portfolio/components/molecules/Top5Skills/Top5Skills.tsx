@@ -1,21 +1,29 @@
-import React from 'react';
-import { Box } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Box, Skeleton } from '@material-ui/core';
+import axios from 'axios';
 
 import { LinearProgressWithLabel } from '../LinearProgressWithLabel';
 
-const skills = [
-  { text: 'React', value: 90 },
-  { text: 'NextJS', value: 90 },
-  { text: 'Angular', value: 80 },
-  { text: 'NestJS', value: 75 },
-  { text: 'Express', value: 70 },
-];
-
 export const Top5Skills = (props: Top5SkillsProps) => {
+  const [skills, setSkills] = useState(Array(5).fill(null));
+
+  useEffect(() => {
+    axios.get('/api/skills').then(({ data }) => {
+      setSkills(data.map(({ name, avg }) => ({
+        text: name,
+        value: avg,
+      })));
+    }).catch(() => {
+      setSkills([]);
+    });
+  }, []);
+
   return (
-    <Box marginY={3}>
+    <Box marginY={3} minHeight={200}>
       {skills.map((skill, index) => (
-        <LinearProgressWithLabel key={index} {...skill} />
+        skill ? 
+          <LinearProgressWithLabel key={index} {...skill} /> : 
+          <Skeleton key={index} variant="text" />
       ))}
     </Box>
   );

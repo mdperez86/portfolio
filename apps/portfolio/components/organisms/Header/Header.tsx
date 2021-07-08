@@ -8,7 +8,7 @@ export const Header = (props: HeaderProps) => {
   const { title, onClick } = props;
 
   return (
-    <Hidden smUp>
+    <Hidden mdUp>
       <AppBar component="header">
         <Toolbar>
           <IconButton edge="start" color="inherit" onClick={onClick}>

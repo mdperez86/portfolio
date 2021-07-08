@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Drawer, Paper, useMediaQuery, useTheme } from '@material-ui/core';
+import { Box, SwipeableDrawer, Paper, useMediaQuery } from '@material-ui/core';
 
 import { SidebarHeader } from '../../molecules/SidebarHeader';
 import { SidebarContent } from '../../molecules/SidebarContent';
@@ -8,19 +8,23 @@ import { SidebarFooter } from '../../molecules/SidebarFooter';
 import { useStyles } from './Sidebar.styles';
 
 export const Sidebar = (props: SidebarProps) => {
-  const { toogle, onClose } = props;
+  const { toggle, onToggle } = props;
 
   const classes = useStyles();
-  const theme = useTheme();
-  const matchesMobile = useMediaQuery(theme.breakpoints.down('xs'), {
-    defaultMatches: true,
-  });
+  const matchesMobile = useMediaQuery(
+    ({ breakpoints }) => breakpoints.down('md'),
+    { defaultMatches: true },
+  );
 
   return (
-    <Drawer
+    <SwipeableDrawer
+      anchor="left"
       variant={matchesMobile ? "temporary" : "permanent"}
-      open={matchesMobile ? toogle : true}
-      onClose={onClose}
+      open={toggle}
+      onClose={() => onToggle(false)}
+      onOpen={() => onToggle(true)}
+      swipeAreaWidth={matchesMobile ? 8 : 0}
+      disableSwipeToOpen={false}
       classes={{
         root: classes.root,
         paper: classes.drawerPaper,
@@ -36,11 +40,11 @@ export const Sidebar = (props: SidebarProps) => {
         </Box>
         <SidebarFooter />
       </Paper>
-    </Drawer>
+    </SwipeableDrawer>
   );
 };
 
 type SidebarProps = {
-  toogle: boolean;
-  onClose: () => void;
+  toggle: boolean;
+  onToggle: (toggle: boolean) => void;
 };

@@ -7,7 +7,7 @@ export const Footer = (props: FooterProps) => {
   const classes = useStyles();
 
   return (
-    <Paper component="footer" elevation={0} className={classes.root}>
+    <Paper component="footer" className={classes.root}>
       &copy; {new Date().getFullYear()} - MD
     </Paper>
   );

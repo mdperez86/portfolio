@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { CircularProgress, Box, Button, Grid, Paper, Typography, TextField } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
-import AlertTitle from '@material-ui/lab/AlertTitle';
+import { Alert, AlertTitle, CircularProgress, Box, Button, Grid, Paper, Typography, TextField } from '@material-ui/core';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';

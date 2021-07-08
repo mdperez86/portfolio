@@ -1,5 +1,5 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-// import type '@material-ui/lab/themeAugmentation';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { blueGrey, amber } from '@material-ui/core/colors';
 
 const victorMono = {
   fontFamily: 'VictorMono',
@@ -10,39 +10,25 @@ const victorMono = {
   `,
 };
 
-const main = createMuiTheme({
+const main = createTheme({
   typography: {
-    fontFamily: [
-      'Poppins',
-      'sans-serif',
-    ].join(','),
+    fontFamily: ['Poppins', 'sans-serif'].join(','),
   },
   palette: {
-    type: 'dark',
+    mode: 'dark',
     primary: {
-      main: '#20202a',
-      dark: '#1e1e28',
+      main: blueGrey[900],
     },
     secondary: {
-      main: '#ffc107',
+      main: amber[500],
     },
-    background: {
-      default: '#191923',
-      paper: '#20202a',
-    },
-    text: {
-      primary: '#fafafc',
-      secondary: '#8c8c8e',
-    }
   },
-  overrides: {
+  components: {
     MuiCssBaseline: {
-      '@global': {
-        '@font-face': [victorMono as unknown],
+      styleOverrides: {
+        '@font-face': [victorMono],
         html: {
           WebkitFontSmoothing: 'auto',
-        },
-        body: {
         },
         '#__next': {
           height: '100vh',
@@ -50,18 +36,10 @@ const main = createMuiTheme({
       },
     },
     MuiDrawer: {
-      paperAnchorDockedLeft: {
-        borderRight: 0,
-      },
-    },
-    MuiPaper: {
-      root: {
-        backgroundImage: 'linear-gradient(159deg, #2d2d3a 0%, #2b2b35 100%)',
-      },
-    },
-    MuiAlert: {
-      root: {
-        backgroundImage: 'none',
+      styleOverrides: {
+        paperAnchorDockedLeft: {
+          borderRight: 0,
+        },
       },
     },
   },

@@ -1,4 +1,5 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import { Theme } from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,7 +20,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       width: '100%',
       height: '100%',
-      backgroundImage: 'linear-gradient(180deg, rgba(45, 45, 58, 0.6) 15%, rgba(45, 45, 58, 0.7) 50%, rgba(43, 43, 53, 0.7) 100%)',
+      backgroundImage: `linear-gradient(180deg, rgba(45, 45, 58, 0.6) 0%, rgba(45, 45, 58, 0.7) 50%, rgba(43, 43, 53, 0.7) 100%)`,
     },
     textRotate: {
       minHeight: '7rem',
