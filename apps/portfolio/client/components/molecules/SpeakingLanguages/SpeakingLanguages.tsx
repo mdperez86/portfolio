@@ -1,35 +1,41 @@
-import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Box, Skeleton, Typography } from '@material-ui/core';
+import axios from 'axios';
 
-import { CircularProgressWithLabel } from '../CircularProgressWithLabel';
 import { useTranslation } from '../../../hooks/useTranslation';
-
-const speakingLanguages = [
-  {
-    name: 'locale.es-CL',
-    value: 98,
-  },
-  {
-    name: 'locale.en-US',
-    value: 55,
-  },
-];
+import { CircularProgressWithLabel } from '../CircularProgressWithLabel';
 
 export const SpeakingLanguages = (props: SpeakingLanguagesProps) => {
   const t = useTranslation();
+  const [speakingLanguages, setSpeakingLanguages] = useState(Array(2).fill({ value: 0 }));
+
+  useEffect(() => {
+    axios.get('/api/speaking-languages').then(({ data }) => {
+      setSpeakingLanguages(data.map(({ name, value }) => ({
+        name: name && `language.${name}.name`,
+        value,
+      })));
+    }).catch(() => {
+      setSpeakingLanguages([]);
+    });
+  }, []);
 
   return (
     <Box display="flex" justifyContent="space-around" marginY={3}>
       {speakingLanguages.map(({ name, value }, index) => (
         <Box key={index}>
           <CircularProgressWithLabel value={value} />
-          <Typography 
-            variant="caption" 
-            component="div"
-            align="center"
-          >
-            {t(name)}
-          </Typography>
+          {name ? (
+            <Typography 
+              variant="caption" 
+              component="div"
+              align="center"
+            >
+              {t(name)}
+            </Typography>
+          ) : (
+            <Skeleton height={20} />
+          )}
         </Box>
       ))}
     </Box>

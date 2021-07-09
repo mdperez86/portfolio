@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, IconButton, SvgIcon } from '@material-ui/core';
+import { Box, IconButton, SvgIcon, Skeleton } from '@material-ui/core';
 import { LinkedIn, GitHub } from '@material-ui/icons';
 import axios from 'axios';
 
@@ -15,18 +15,21 @@ const socialIcons = {
 };
 
 export const SidebarFooter = (props: SidebarFooterProps) => {
-  const [socials, setSocials] = useState([]);
+  const [socials, setSocials] = useState(Array(3).fill(null));
   const classes = useStyles();
   const t = useTranslation();
 
   useEffect(() => {
     axios.get('/api/socials').then(({ data }) => {
       setSocials(() => {
-        return Object.entries(data).map(([name, href]) => ({
-          href,
-          Icon: socialIcons[name],
-          ariaLabel: `sidebarFooter.${name}.ariaLabel`,
-        }));
+        return data.map(({ name, url }) => {
+          const id = name.toLowerCase();
+          return {
+            href: url,
+            Icon: socialIcons[id],
+            ariaLabel: `sidebarFooter.${id}.ariaLabel`,
+          };
+        });
       });
     }).catch(() => {
       setSocials(() => []);
@@ -35,17 +38,21 @@ export const SidebarFooter = (props: SidebarFooterProps) => {
 
   return (
     <Box className={classes.root}>
-      {socials.map(({ href, ariaLabel, Icon }, index) => (
-        <IconButton
-          key={index}
-          href={href}
-          aria-label={t(ariaLabel) as string}
-          size="small"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon fontSize="small" aria-hidden="true" />
-        </IconButton>
+      {socials.map((social, index) => (
+        social ? (
+          <IconButton
+            key={index}
+            href={social.href}
+            aria-label={t(social.ariaLabel) as string}
+            size="small"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <social.Icon fontSize="small" aria-hidden="true" />
+          </IconButton>
+        ) : (
+          <Skeleton key={index} variant="circular" width={30} height={30} />
+        )
       ))}
     </Box>
   );

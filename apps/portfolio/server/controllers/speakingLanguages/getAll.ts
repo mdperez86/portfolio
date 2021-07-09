@@ -8,14 +8,15 @@ export const getAll = async (
 ) => {
   const db = getFirestore();
 
-  const snapshot = await db.collection('socials')
-    .limit(5)
+  const snapshot = await db.collection('speakingLanguages')
+    .orderBy('value', 'desc')
+    .limit(3)
     .get();
-  const socials = [];
+  const speakingLanguages = [];
 
   snapshot.forEach((doc) => {
-    socials.push(doc.data());
+    speakingLanguages.push(doc.data());
   });
 
-  return res.status(200).json(socials);
+  return res.status(200).json(speakingLanguages);
 };
