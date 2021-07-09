@@ -4,30 +4,32 @@ import { Box, CircularProgress, Typography } from '@material-ui/core';
 import { useStyles } from './CircularProgressWithLabel.styles';
 
 export const CircularProgressWithLabel = (props: CircularProgressWithLabelProps) => {
-  const {value} = props;
+  const { value } = props;
   const classes = useStyles();
 
   return (
-    <Box 
-      className={classes.root} 
-      position="relative" 
+    <Box
+      className={classes.root}
+      position="relative"
       display="inline-flex"
     >
-      <CircularProgress 
+      <CircularProgress
         className={classes.bottom}
         value={100}
         size={48}
         variant="determinate"
+        aria-hidden="true"
       />
-      <CircularProgress 
+      <CircularProgress
         className={classes.top}
         classes={{
           circle: classes.circle,
         }}
         value={value}
         size={48}
-        color="secondary" 
-        variant="determinate" 
+        color="secondary"
+        variant="determinate"
+        aria-hidden="true"
       />
       <Box
         top={0}

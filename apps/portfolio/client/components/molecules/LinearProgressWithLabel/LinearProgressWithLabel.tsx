@@ -23,6 +23,7 @@ export const LinearProgressWithLabel = (props: LinearProgressWithLabelProps) => 
           classes={{ colorSecondary: classes.colorSecondary }}
           color="secondary" 
           variant="determinate"
+          aria-hidden="true"
         />
       </Box>
     </Box>

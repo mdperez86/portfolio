@@ -32,19 +32,21 @@ export const MainTemplate = (props: MainTemplate) => {
         <Header title={t(title)} onClick={() => handleDrawerToggle(true)} />
         <Sidebar toggle={mobileOpen} onToggle={handleDrawerToggle} />
         
-        <Box className={classes.wrapper}>
-          <Box className={classes.bgContainer}>
+        <Box component="main" className={classes.wrapper}>
+          <Box className={classes.bgContainer} role="presentation">
             <Image 
-              src="/images/top-bg-02.jpg" 
+              src="/images/top-bg-02.jpg"
               width={1200}
               height={640}
               layout="fixed"
               objectFit="cover"
               objectPosition="50% 54%"
+              aria-hidden="true"
+              alt="top-bg-02"
             />
             <Box className={classes.bgShadow} />
           </Box>
-          <Box component="main" className={classes.main}>
+          <Box className={classes.main}>
             {children}
             <Footer />
           </Box>

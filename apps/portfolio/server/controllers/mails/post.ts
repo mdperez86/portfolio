@@ -27,7 +27,7 @@ export const post = async (
   res: NextApiResponse<ResponseDTO>
 ) => {
   return validationSchema
-    .validate(req.body, { abortEarly: false, strict: true })
+    .validate(req.body, { abortEarly: false, stripUnknown: true })
     .then(async (data) => {
       await verifyReCaptcha(req.body.reCaptcha);
       const emailInfo = await sendMail(data.name, data.email, data.message);

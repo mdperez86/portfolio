@@ -75,7 +75,7 @@ export const HireForm = (props: HireFormProps) => {
       </Head>
       <Box p={2}>
         <Box mb={2}>
-          <Typography component="h3" variant="h6">
+          <Typography component="h2" variant="h5">
             {t('hireForm.title')}
           </Typography>
         </Box>
@@ -104,11 +104,12 @@ export const HireForm = (props: HireFormProps) => {
         >
           <Grid item xs={12} sm={6}>
             <TextField
+              id="hireForm.name"
+              name="name"
               label={t('hireForm.name.label')}
               variant="filled"
               color="secondary"
               fullWidth
-              name="name"
               value={formik.values.name}
               onChange={formik.handleChange}
               error={formik.touched.name && Boolean(formik.errors.name)}
@@ -117,12 +118,13 @@ export const HireForm = (props: HireFormProps) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              id="hireForm.email"
+              name="email"
               type="email"
               label={t('hireForm.email.label')}
               variant="filled"
               color="secondary"
               fullWidth
-              name="email"
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
@@ -131,13 +133,14 @@ export const HireForm = (props: HireFormProps) => {
           </Grid>
           <Grid item xs={12}>
             <TextField
+              id="hireForm.message"
+              name="message"
               label={t('hireForm.message.label')}
               variant="filled"
               color="secondary"
               multiline
               rows={4}
               fullWidth
-              name="message"
               value={formik.values.message}
               onChange={formik.handleChange}
               error={formik.touched.message && Boolean(formik.errors.message)}

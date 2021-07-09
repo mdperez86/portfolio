@@ -19,7 +19,7 @@ export const Heroe = (props: HeroeProps) => {
 
   return (
     <Card component="section" className={classes.root}>
-      <Box className={classes.bgContainer}>
+      <Box className={classes.bgContainer} role="presentation">
         <Image
           className={classes.bgImage}
           src="/images/top-bg-02.jpg"
@@ -28,6 +28,8 @@ export const Heroe = (props: HeroeProps) => {
           layout="fixed"
           objectFit="cover"
           objectPosition="50% 100%"
+          aria-hidden="true"
+          alt="top-bg-02"
         />
         <Box className={classes.bgShadow} />
       </Box>

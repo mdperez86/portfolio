@@ -38,12 +38,9 @@ export const ShortPersonalInfo = (props: ShortPersonalInfoProps) => {
         age: calcAge(birthday),
       });
     }).catch((e) => {
-      console.log(e);
       setPersonalInfo({});
     });
   }, []);
-
-  console.log(personalInfo);
 
   return (
     <Box component="dl" className={classes.root}>

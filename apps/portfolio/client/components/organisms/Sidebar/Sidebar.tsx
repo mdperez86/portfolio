@@ -33,7 +33,7 @@ export const Sidebar = (props: SidebarProps) => {
         keepMounted: matchesMobile, // Better open performance on mobile.
       }}
     >
-      <Paper className={classes.paper}>
+      <Paper className={classes.paper} component="nav">
         <Box overflow="auto">
           <SidebarHeader />
           <SidebarContent />

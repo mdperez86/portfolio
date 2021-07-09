@@ -1,6 +1,7 @@
 {
   "page.index.title": "Maikel",
   "page.index.h1.text": "Discover my modest web space!",
+  "locale.button.ariaLabel": "Language",
   "locale.en-US": "English (US)",
   "locale.es-CL": "Spanish (CL)",
   "language.en.name": "English",

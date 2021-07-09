@@ -28,7 +28,7 @@ export const SidebarHeader = (props: SidebarHeaderProps) => {
       <Box marginBottom={2}>
         {
           data.avatar ? 
-            <Avatar className={classes.avatarLarge} src={data.avatar} /> :
+            <Avatar className={classes.avatarLarge} src={data.avatar} alt={data.name} /> :
             <Skeleton variant="circular" width={96} height={96} />
         }
       </Box>

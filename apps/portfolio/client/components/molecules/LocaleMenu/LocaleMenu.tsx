@@ -33,9 +33,10 @@ export const LocaleMenu = (props: LocaleMenuProps) => {
         color="inherit"
         aria-controls={id}
         aria-haspopup="true"
+        aria-label={t('locale.button.ariaLabel') as string}
         onClick={handleOpen}
       >
-        <FlagIcon locale={locale} />
+        <FlagIcon locale={locale} aria-hidden="true" />
       </IconButton>
       <Menu
         id={id}
