@@ -2,6 +2,7 @@ import React from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { Box } from '@material-ui/core';
 
+import { withPersonalInfo } from '../client/contexts/PersonalInfo';
 import { MainTemplate } from '../client/components/templates/MainTemplate';
 import { HireForm } from '../client/components/organisms/HireForm';
 import { Heroe } from '../client/components/molecules/Heroe';
@@ -25,4 +26,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 type IndexPageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-export default IndexPage;
+export default withPersonalInfo(IndexPage);

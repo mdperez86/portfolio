@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import Index from '../pages/index';
 
-jest.mock('../components/templates/MainTemplate', () => ({
+jest.mock('../client/components/templates/MainTemplate', () => ({
   MainTemplate: () => null,
 }));
 

@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Box, Typography, Skeleton } from '@material-ui/core';
-import axios from 'axios';
 
 import { useTranslation } from '../../../hooks/useTranslation';
+import { usePersonalInfo } from '../../../hooks/usePersonalInfo';
 import { useStyles } from './ShortPersonalInfo.styles';
 
 const calcAge = (birthday: Date | string) => {
@@ -15,36 +15,31 @@ const calcAge = (birthday: Date | string) => {
 type PersonalDataDTO = {
   country?: string;
   city?: string;
-  birthday?: string;
   age?: number;
 };
 
 export const ShortPersonalInfo = (props: ShortPersonalInfoProps) => {
   const classes = useStyles();
   const t = useTranslation();
+  const { country, city, birthday } = usePersonalInfo();
 
-  const [personalInfo, setPersonalInfo] = useState<PersonalDataDTO>({
+  const [info, setInfo] = useState<PersonalDataDTO>({
     country: null,
     city: null,
     age: null,
   });
 
   useEffect(() => {
-    axios.get<PersonalDataDTO>('/api/personal/data').then(({ data }) => {
-      const { birthday, country, city } = data;
-      setPersonalInfo({
-        country: t(`shortPersonalInfo.${country}.value`) as string,
-        city: t(`shortPersonalInfo.${city}.value`) as string,
-        age: calcAge(birthday),
-      });
-    }).catch((e) => {
-      setPersonalInfo({});
+    setInfo({
+      country: country && t(`shortPersonalInfo.${country}.value`) as string,
+      city: city && t(`shortPersonalInfo.${city}.value`) as string,
+      age: birthday && calcAge(birthday),
     });
-  }, []);
+  }, [country, city, birthday]);
 
   return (
     <Box component="dl" className={classes.root}>
-      {Object.entries(personalInfo).map(([key, value], index) => (
+      {Object.entries(info).map(([key, value], index) => (
         <Fragment key={index}>
           <Typography component="dt" className={classes.dt} variant="caption">
             {t(`shortPersonalInfo.${key}.text`)}
@@ -62,6 +57,14 @@ export const ShortPersonalInfo = (props: ShortPersonalInfoProps) => {
   );
 };
 
-type ShortPersonalInfoProps = {
+ShortPersonalInfo.defaultProps = {
+  country: null,
+  city: null,
+  birthday: null,
+};
 
+type ShortPersonalInfoProps = {
+  country?: string;
+  city?: string;
+  birthday?: string;
 };

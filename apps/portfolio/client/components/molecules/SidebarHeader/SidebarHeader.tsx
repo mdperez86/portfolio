@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box, Typography, Avatar, Skeleton } from '@material-ui/core';
-import axios from 'axios';
 
+import { usePersonalInfo } from '../../../hooks/usePersonalInfo';
 import { useStyles } from './SidebarHeader.styles';
-
-type PersonalDataDTO = {
-  avatar?: string;
-  name?: string;
-  profession?: string;
-  occupation?: string;
-};
 
 export const SidebarHeader = (props: SidebarHeaderProps) => {
   const classes = useStyles();
-  const [data, setData] = useState<PersonalDataDTO>({});
-
-  useEffect(() => {
-    axios.get<PersonalDataDTO>('/api/personal/data').then(({ data }) => {
-      setData(data);
-    }).catch(() => {
-      setData({});
-    });
-  }, []);
+  const data = usePersonalInfo();
 
   return (
     <Box className={classes.root}>
